@@ -82,7 +82,7 @@ function ParameterForm({ onSubmit }) {
 					<input type="number" id="x-end" className="x-end" placeholder="e.g. 1.5" value={formData.x_end} onChange={(e) => setFormData({ ...formData, x_end: e.target.value})}></input>
 				
 					<br></br>
-					<button type="submit" className="submit-btn">Submit</button>
+					<button type="submit" className="submit-btn">Visualize</button>
 				</ul>
 			</form>
 		</div>

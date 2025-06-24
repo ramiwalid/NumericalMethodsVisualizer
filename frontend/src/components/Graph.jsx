@@ -5,17 +5,16 @@ import {
 
 function Graph({ data }) {
 	return (
-		<ResponsiveContainer className="graph" width="50%" height={400}>
+		<ResponsiveContainer className="graph" width="50%" height={400} minWidth={700}>
 			<LineChart data={data}>
 				<XAxis dataKey="x" tickFormatter={(value) => value.toFixed(3)}>
-					<Label value="x-value" position="insideBottom" offset={-15} />
+					<Label value="x-value" position="insideBottom" offset={-5} />
 				</XAxis>
 				<YAxis>
-					<Label value="y-value" angle={-90} position="insideLeft" offset={-1} />
+					<Label value="y-value" position="insideLeft" offset={-10} />
 				</YAxis>
 				<CartesianGrid opacity={0.3} />
 				<Tooltip content={<CustomToolTip />} /> 
-				<Legend />
 				<Line type="monotone" dataKey="y" stroke="#8884d8" strokeWidth={2} dot={true}/>
 			</LineChart>
 		</ResponsiveContainer>
