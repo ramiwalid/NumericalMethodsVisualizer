@@ -1,0 +1,108 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+.header {
+	display: block;
+	text-align: center; 
+}
+.header h1 {
+}
+.header h3 {
+}
+
+.title {
+}
+
+.result {
+	display: flex;
+	gap: 90px;
+}
+
+.graph {
+	margin-top: 100px;
+}
+
+.input-parameters {
+	margin-top: 100px;
+}
+
+.function-label span {
+	font-size: 20px;
+}
+.function-eq {
+	margin-left: 20px;
+}
+.function-input {
+	margin-left: 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #EDE9F7;
+	color: black;
+	padding: 2px;
+}
+
+.initial-conditions input {
+	margin-top: 30px;
+	margin-left: 20px;
+	max-width: 100px;
+	border: none;
+	border-radius: 5px;
+	background-color: #EDE9F7;
+	color: black;
+	padding: 2px;
+}
+.initial-conditions label {
+	font-size: 20px;
+}
+.initial-eq {
+	margin-left: 20px;
+}
+
+.step-size {
+	margin-top: 30px;
+	margin-left: 20px;
+	max-width: 100px;
+	border: none;
+	border-radius: 5px;
+	background-color: #EDE9F7;
+	color: black;
+	padding: 2px;
+}
+.step-size-label {
+	font-size: 20px;
+}
+.step-size-eq {
+	margin-left: 20px;
+}
+
+.x-end {
+	margin-top: 30px;
+	margin-left: 20px;
+	max-width: 100px;
+	border: none;
+	border-radius: 5px;
+	background-color: #EDE9F7;
+	color: black;
+	padding: 2px;
+}
+.x-end-label {
+	font-size: 20px;
+}
+.x-end-eq {
+	margin-left: 20px;
+}
+
+.submit-btn {
+	margin-top: 30px;	
+}
