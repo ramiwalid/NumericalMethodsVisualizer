@@ -14,12 +14,26 @@ function Graph({ data }) {
 					<Label value="y-value" angle={-90} position="insideLeft" offset={-1} />
 				</YAxis>
 				<CartesianGrid opacity={0.3} />
-				<Tooltip /> 
+				<Tooltip content={<CustomToolTip />} /> 
 				<Legend />
 				<Line type="monotone" dataKey="y" stroke="#8884d8" strokeWidth={2} dot={true}/>
 			</LineChart>
 		</ResponsiveContainer>
 	);
 }
+
+const CustomToolTip = ({ active, payload, label }) => {
+	if (active && payload && payload.length) {
+		return (
+			<div className="p-4 bg-slate-900 flex flex-col gap-4 rounded-md">
+				<p className="text-medium text-lg">X:{label.toFixed(4)}</p>
+				<p className="text-sm text-blue-400">
+					Y: 
+					<span className="ml-2">{payload[0].value.toFixed(4)}</span>
+				</p>
+			</div>
+		);
+	}
+};
 
 export default Graph;
