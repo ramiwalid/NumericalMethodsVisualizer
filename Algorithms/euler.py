@@ -4,8 +4,8 @@ def euler(f, x0, y0, h, n):
     y = y0;
     while x <= n:
         points.append((x, y))
-        x += h
         y += h * f(x,y)
+        x += h
     return points
 
 
