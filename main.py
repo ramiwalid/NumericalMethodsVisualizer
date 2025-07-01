@@ -17,6 +17,7 @@ class Parameters(BaseModel):
     y_initial: float 
     step_size: float 
     x_end: float
+    method: str
 
 class Points(BaseModel):
     points: List[Tuple[float, float]] 
@@ -61,4 +62,11 @@ async def getParameters(data: Parameters):
     heun_result = heun(f_lambda, data.x_end, data.x_initial, data.y_initial, data.step_size) 
     rungekutta_result = rungekutta(f_lambda, data.x_end, data.x_initial, data.y_initial, data.step_size)
 
-    return {"method": "Euler", "points": euler_result} 
+    if data.method == 'euler':
+        return {"method": "Euler", "points": euler_result}
+    elif data.method == 'heun':
+        return {"method": "Heun", "points": heun_result}
+    elif data.method == 'runge':
+        return {"method": "Runge-Kutta", "points": rungekutta_result}
+    else:
+        return {"Error": "Missing method"}
