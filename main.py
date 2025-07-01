@@ -1,9 +1,11 @@
+from ast import parse
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from Algorithms.euler import euler 
 from Algorithms.heun import heun
 from Algorithms.rungekutta4 import rungekutta
-from sympy import symbols, lambdify, sympify
+from sympy import symbols, lambdify 
+from sympy.parsing.sympy_parser import parse_expr, standard_transformations, implicit_multiplication_application
 from pydantic import BaseModel
 from typing import List, Tuple 
 import uvicorn
@@ -38,9 +40,12 @@ parameters = []
 @app.post("/")
 async def getParameters(data: Parameters):
     x, y = symbols('x y')
-    f = sympify(data.equation)
+    transformations = standard_transformations + (implicit_multiplication_application,)
+    f = parse_expr(data.equation, transformations=transformations)
     f_lambda = lambdify((x,y), f)
 
-    result = euler(f_lambda, data.x_initial, data.y_initial, data.step_size, data.x_end)
+    euler_result = euler(f_lambda, data.x_initial, data.y_initial, data.step_size, data.x_end)
+    heun_result = heun(f_lambda, data.x_end, data.x_initial, data.y_initial, data.step_size) 
+    rungekutta_result = rungekutta(f_lambda, data.x_end, data.x_initial, data.y_initial, data.step_size)
 
-    return {"method": "Euler", "points": result}
+    return {"method": "Euler", "points": euler_result} 
