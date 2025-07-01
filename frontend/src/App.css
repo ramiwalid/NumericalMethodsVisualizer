@@ -105,4 +105,13 @@ input[type=number] {
 
 .submit-btn {
 	margin-top: 30px;	
+	color: white;
+	border: none;
+	padding: 0.5rem 0.75rem;
+	font-weight: bold;
+	border-radius: 8px;
+	transition: background 0.3s ease;
+}
+.submit-btn:hover {
+	background-color: #574b90;
 }
