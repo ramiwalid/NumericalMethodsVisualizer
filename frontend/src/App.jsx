@@ -10,10 +10,12 @@ function App() {
 		x_initial: 0,
 		y_initial: 0,
 		step_size: 0.1,
-		x_end: 0
+		x_end: 0,
 	});
 
 	const [graphData, setGraphData] = useState([]);
+
+	const [method, setMethod] = useState('euler');
 
 	const handleFormSubmit = async (formData) => {
 		const response = await axios.post("http://localhost:8000", {
@@ -22,6 +24,7 @@ function App() {
 			y_initial: formData.y_initial,
 			step_size: formData.step_size,
 			x_end: formData.x_end,
+			method,
 		});
 		const formattedPoints = response.data.points.map(([x,y]) => ({x,y}));
 		setGraphData(formattedPoints);
@@ -38,6 +41,20 @@ function App() {
 				<ParameterForm onSubmit={handleFormSubmit} />
 				{solutionData && <pre></pre>}
 				<Graph data={graphData} />
+			</div>
+			<div className='radio-buttons'>
+				<div className='radio-group'>
+					<input name='method' type='radio' value='euler' id='euler-radio' checked={method == 'euler'} onChange={e => setMethod(e.target.value)}></input>
+					<label htmlFor='euler-radio'>Euler</label>
+				</div>
+				<div className='radio-group'>
+					<input name='method' type='radio' value='heun' id='heun-radio' checked={method == 'heun'} onChange={e => setMethod(e.target.value)}></input>
+					<label htmlFor='heun-radio'>Heun</label>
+				</div>
+				<div className='radio-group'>
+					<input name='method' type='radio' value='runge' id='runge-radio' checked={method =='runge'} onChange={e => setMethod(e.target.value)}></input>
+					<label htmlFor='runge-radio'>Runge-Kutta</label>
+				</div>
 			</div>
 		</>
   	)

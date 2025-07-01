@@ -115,3 +115,15 @@ input[type=number] {
 .submit-btn:hover {
 	background-color: #574b90;
 }
+
+.radio-buttons {
+	margin-top: 40px;
+	margin-left: 710px;
+	width: 300px;
+	display: flex;
+	justify-content: space-between;
+}
+.radio-group {
+	display: flex;
+	gap: 5px;
+}
